@@ -5,13 +5,11 @@ import 'package:flutter/material.dart';
 class GroupChatImage extends StatelessWidget {
   final List<String> imageUrls;
   final double imageSize;
-  final double spacing;
 
   const GroupChatImage({
     super.key,
     required this.imageUrls,
     required this.imageSize,
-    required this.spacing,
   });
 
   @override
@@ -20,7 +18,7 @@ class GroupChatImage extends StatelessWidget {
       children: [
         // Full circle image
         Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),
+          padding: const EdgeInsets.only(left: 25.0),
           child: CircleAvatar(
             radius: imageSize / 2,
             backgroundImage: AssetImage(imageUrls[0]),
@@ -29,7 +27,7 @@ class GroupChatImage extends StatelessWidget {
         const SizedBox(width: 10.0),
         // Half circle image
         Padding(
-          padding: EdgeInsets.only(right: spacing),
+          padding: EdgeInsets.only(right: 0),
           child: Positioned(
             right: imageSize / 4,
             child: Container(

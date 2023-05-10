@@ -11,10 +11,9 @@ class ChatScreen extends StatelessWidget {
     const GroupChatImage darrenAndLanGroupChatImage = GroupChatImage(
       imageUrls: [
         'assets/images/images3.jpg',
-        'assets/images/images8.jpg',
+        'assets/images/images4.jpg',
       ],
-      imageSize: 55,
-      spacing: 0,
+      imageSize: 40,
     );
 
     return Scaffold(
@@ -111,18 +110,71 @@ class ChatScreen extends StatelessWidget {
                   vertical: 14,
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (chat.sender.imageUrl != null)
                       CircleAvatar(
-                        radius: 26,
+                        radius: 23,
                         backgroundImage: AssetImage(chat.sender.imageUrl!),
                       ),
                     if (chat.sender.imageUrl == null)
                       GroupChatImage(
                         imageUrls: darrenAndLanGroupChatImage.imageUrls,
                         imageSize: darrenAndLanGroupChatImage.imageSize,
-                        spacing: darrenAndLanGroupChatImage.spacing,
                       ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              chat.sender.name,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Text(
+                              chat.text,
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 14,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            if (chat.mark != null)
+                              Chip(
+                                label: Text(chat.mark!,
+                                    style: TextStyle(
+                                      color: chat.mark == "Help Req."
+                                          ? Colors.black
+                                          : Colors.white,
+                                    )),
+                                backgroundColor: chat.mark == "Help Req."
+                                    ? Colors.yellow
+                                    : chat.mark == "Challenge"
+                                        ? Colors.red
+                                        : Colors.black38,
+                              ),
+                            const Divider(
+                              height: 8,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Text(
+                      chat.time,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12,
+                      ),
+                    ),
                   ],
                 ),
               );
