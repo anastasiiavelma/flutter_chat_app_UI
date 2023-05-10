@@ -59,8 +59,8 @@ List<Message> chats = [
   ),
   Message(
     id: 6,
-    sender: dillan,
-    time: '2d ago',
-    text: 'You: Are you coming?',
+    sender: julie,
+    time: '14d ago',
+    text: 'You: Hello!',
   ),
 ];

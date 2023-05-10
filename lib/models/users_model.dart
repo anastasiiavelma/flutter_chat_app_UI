@@ -1,5 +1,3 @@
-import 'package:chat_app/widgets/group_image_chat.dart';
-
 class User {
   final int id;
   final String name;

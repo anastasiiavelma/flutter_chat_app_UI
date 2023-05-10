@@ -1,5 +1,6 @@
-import 'package:chat_app/widgets/group_image_chat.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:chat_app/components/group_image_chat.dart';
+import 'package:chat_app/components/search_field_and_filter.dart';
+
 import 'package:flutter/material.dart';
 import 'package:chat_app/models/messages_model.dart';
 
@@ -49,54 +50,9 @@ class ChatScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 1.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search...',
-                        prefixIcon: IconButton(
-                          icon: const Icon(Icons.search),
-                          onPressed: () {},
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 2.0),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          side:
-                              const BorderSide(color: Colors.pink, width: 1.0),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                      child: const Icon(
-                        EvaIcons.options2,
-                        size: 20,
-                        color: Colors.pink,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: SearchFieldAndFilter(),
           ),
           ListView.builder(
             shrinkWrap: true,
@@ -126,7 +82,7 @@ class ChatScreen extends StatelessWidget {
                     const SizedBox(width: 10),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 15),
+                        padding: const EdgeInsets.only(left: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -134,8 +90,8 @@ class ChatScreen extends StatelessWidget {
                               chat.sender.name,
                               style: const TextStyle(
                                 color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                             const SizedBox(height: 3),
@@ -143,7 +99,7 @@ class ChatScreen extends StatelessWidget {
                               chat.text,
                               style: const TextStyle(
                                 color: Colors.grey,
-                                fontSize: 14,
+                                fontSize: 13,
                               ),
                             ),
                             const SizedBox(height: 6),
@@ -162,7 +118,7 @@ class ChatScreen extends StatelessWidget {
                                         : Colors.black38,
                               ),
                             const Divider(
-                              height: 8,
+                              color: Colors.black12,
                             ),
                           ],
                         ),
@@ -171,7 +127,8 @@ class ChatScreen extends StatelessWidget {
                     Text(
                       chat.time,
                       style: const TextStyle(
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
+                        fontWeight: FontWeight.w400,
                         fontSize: 12,
                       ),
                     ),
