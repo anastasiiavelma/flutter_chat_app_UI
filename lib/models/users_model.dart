@@ -1,24 +1,16 @@
+import 'package:chat_app/widgets/group_image_chat.dart';
+
 class User {
   final int id;
   final String name;
-  final String imageUrl;
-  // final GroupChatImage? groupChatImage;
+  late final String? imageUrl;
 
   User({
     required this.id,
     required this.name,
-    required this.imageUrl,
+    this.imageUrl,
   });
 }
-
-// const GroupChatImage darrenAndLanGroupChatImage = GroupChatImage(
-//   imageUrls: [
-//     'assets/images/images3.jpg',
-//     'assets/images/images8.jpg',
-//   ],
-//   imageSize: 25,
-//   spacing: 10,
-// );
 
 // you
 final User currentUser = User(
@@ -56,7 +48,7 @@ final User kate = User(
 final User darrenAndLan = User(
   id: 6,
   name: 'Darren Swinney, Lan...',
-  imageUrl: 'assets/images/images9.jpg',
+  imageUrl: null,
 );
 
 final User edward = User(

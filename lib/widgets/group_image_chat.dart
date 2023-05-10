@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class GroupChatImage extends StatelessWidget {
@@ -14,23 +16,37 @@ class GroupChatImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Stack(
       children: [
-        for (int i = 0; i < imageUrls.length; i++)
-          Container(
-            margin: EdgeInsets.only(
-              right: i == imageUrls.length - 1 ? 0 : spacing,
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(imageSize / 2),
-              child: Image.network(
-                imageUrls[i],
-                width: imageSize,
-                height: imageSize,
-                fit: BoxFit.cover,
+        // Full circle image
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),
+          child: CircleAvatar(
+            radius: imageSize / 2,
+            backgroundImage: AssetImage(imageUrls[0]),
+          ),
+        ),
+        const SizedBox(width: 10.0),
+        // Half circle image
+        Padding(
+          padding: EdgeInsets.only(right: spacing),
+          child: Positioned(
+            right: imageSize / 4,
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.white,
+                  width: 2.0,
+                ),
+              ),
+              child: CircleAvatar(
+                radius: imageSize / 2,
+                backgroundImage: AssetImage(imageUrls[1]),
               ),
             ),
           ),
+        ),
       ],
     );
   }
